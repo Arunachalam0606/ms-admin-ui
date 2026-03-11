@@ -1,26 +1,109 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@custom-variant dark (&:is(.dark *));
 
-@theme inline {
+@theme {
   --color-background: var(--background);
+  --color-surface: var(--surface);
+  --color-panel: var(--panel);
+  --color-border: var(--border);
+  --color-hover: var(--hover);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-button: var(--button);
+  --color-button-hover: var(--button-hover);
+
+  --font-sans: "Inter", sans-serif;
+  --font-serif: "Playfair Display", serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+:root {
+  /* Layout G Light Mode Tokens */
+  --background: #F4F7F9;
+  --surface: #FFFFFF;
+  --panel: #F8FAFC;
+  --border: #E2E8F0;
+  
+  --foreground: #333333;
+  --muted: #64748B;
+  --muted-foreground: #94A3B8;
+  
+  --primary: #18324C;
+  --primary-foreground: #FFFFFF;
+  
+  --accent: #3DEDA4;
+  --accent-foreground: #18324C;
+  
+  --hover: #F1F5F9;
+  
+  --button: #EA2F5D;
+  --button-hover: #D42A55;
+}
+
+.dark {
+  /* Layout G Dark Mode Tokens */
+  --background: #090A0E;
+  --surface: #13151A;
+  --panel: #181A20;
+  --border: #2A2E39;
+  
+  --foreground: #FDFCFB;
+  --muted: #A3C1E2;
+  --muted-foreground: #6A8CAF;
+  
+  --primary: #18324C;
+  --primary-foreground: #3DEDA4;
+  
+  --accent: #3DEDA4;
+  --accent-foreground: #18324C;
+  
+  --hover: #1A202C;
+  
+  --button: #EA2F5D;
+  --button-hover: #D42A55;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* Custom Scrollbar */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background-color: rgba(100, 116, 139, 0.2);
+  border-radius: 10px;
+}
+.dark .custom-scrollbar::-webkit-scrollbar-thumb {
+  background-color: rgba(163, 193, 226, 0.2);
+}
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(100, 116, 139, 0.4);
+}
+.dark .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(163, 193, 226, 0.4);
+}
+
+/* Hide scrollbar completely but allow scrolling */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
