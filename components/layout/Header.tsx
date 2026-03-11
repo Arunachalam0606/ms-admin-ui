@@ -50,7 +50,7 @@ export function Header({
           </button>
 
           {/* Desktop breadcrumb */}
-          <div className="flex items-center gap-2 text-muted-foreground text-sm font-medium min-w-0 overflow-x-scroll">
+          <div className="flex items-center gap-2 text-muted-foreground text-sm font-medium min-w-0 overflow-x-scroll md:overflow-x-hidden">
             <span className="truncate max-w-[150px] opacity-70">
               {activeContext}
             </span>
